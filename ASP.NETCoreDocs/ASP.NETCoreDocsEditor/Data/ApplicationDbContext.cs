@@ -10,7 +10,7 @@ namespace ASP.NETCoreDocsEditor.Data
            : base(options)
         {
         }
-        public DbSet<Doc> Docs { get; set; }
+        public DbSet<DocksMockup> Docs { get; set; }
     }
 }
 

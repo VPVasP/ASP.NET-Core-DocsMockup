@@ -51,7 +51,7 @@ namespace ASP.NETCoreDocsEditor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Content,UserId")] Doc doc)
+        public async Task<IActionResult> Create([Bind("Id,Title,Content,UserId")] DocksMockup doc)
         {
             if (ModelState.IsValid)
             {
@@ -84,12 +84,9 @@ namespace ASP.NETCoreDocsEditor.Controllers
             return View(doc);
         }
 
-        // POST: Docs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,UserId")] Doc doc)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,UserId")] DocksMockup doc)
         {
             if (id != doc.Id)
             {

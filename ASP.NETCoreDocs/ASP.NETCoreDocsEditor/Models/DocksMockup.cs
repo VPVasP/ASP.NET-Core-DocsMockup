@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ASP.NETCoreDocsEditor.Models
 {
-    public class Doc
+    public class DocksMockup
     {
         public int Id { get; set; }
         public string Title { get; set; }
