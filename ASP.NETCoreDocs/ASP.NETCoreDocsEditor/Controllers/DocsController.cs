@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ASP.NETCoreDocsEditor.Controllers
 {
-    [Authorize]
+    [Authorize] //require authorizattion 
     public class DocsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,16 +23,19 @@ namespace ASP.NETCoreDocsEditor.Controllers
         }
 
         // GET: Docs
+        //display a list of documents that belong to the user
         public async Task<IActionResult> Index()
         {
+            //query for the sql database to get documents from the usser
             var applicationDbContext = from c in _context.Docs
                                        select c;
             applicationDbContext = applicationDbContext.Where(a => a.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
 
+            //return the documents to the view
             return View(await applicationDbContext.Include(d => d.User).ToListAsync());
         }
 
-
+        //displays the form to create documents
         [HttpGet("~/Docs/Create")]
         // GET: Docs/Create
         public IActionResult Create()
@@ -40,15 +43,17 @@ namespace ASP.NETCoreDocsEditor.Controllers
 
             return View();
         }
+
+        //display the vpvasp content
         [HttpGet("~/Vpvasp")]
         public IActionResult Vpvasp()
         {
             return View();
         }
 
-        // POST: Docs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
+
+        //Create a new document 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Content,UserId")] DocksMockup doc)
@@ -63,7 +68,7 @@ namespace ASP.NETCoreDocsEditor.Controllers
             return View(doc);
         }
 
-        // GET: Docs/Edit/5
+        //Edit a document with the given id
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Docs == null)
@@ -84,6 +89,7 @@ namespace ASP.NETCoreDocsEditor.Controllers
             return View(doc);
         }
 
+        //This update the document with the given id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,UserId")] DocksMockup doc)
@@ -117,7 +123,7 @@ namespace ASP.NETCoreDocsEditor.Controllers
             return View(doc);
         }
 
-        // GET: Docs/Delete/5
+        //Delete page for the docs
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Docs == null)
@@ -140,7 +146,7 @@ namespace ASP.NETCoreDocsEditor.Controllers
             return View(doc);
         }
 
-        // POST: Docs/Delete/5
+        //Delete the document based on an id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -158,7 +164,7 @@ namespace ASP.NETCoreDocsEditor.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        //check if a doc with a specific id exists
         private bool DocExists(int id)
         {
             return (_context.Docs?.Any(e => e.Id == id)).GetValueOrDefault();

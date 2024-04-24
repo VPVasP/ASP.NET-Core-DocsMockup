@@ -4,7 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 <div class="row">
-    <div class="col-md-4"> 
+    <div class="col-md-4">
+        <!--form to create edit a document -->
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -22,8 +23,10 @@
                 <input type="hidden" asp-for="UserId" class="form-control" />
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
+            <!--save button->
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+             <!--delete button->
                 <a class="btn btn-danger ml-2" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
             </div>
 
@@ -32,6 +35,7 @@
 </div>
 
 <div>
+    <!--link to return to the previous page -->
     <a class="btn btn-info mt-3" asp-action="Index">Return</a>
 </div>
 

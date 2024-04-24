@@ -9,14 +9,16 @@
 
 <div class="row">
     <div class="col-md-4">
+        <!-- form to create a new document-->
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <!-- inputfield for the document title-->
                 <input asp-for="Title" class="form-control" value="Untitled Document" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-
+                <!-- text are for the documents content-->
                 <textarea id="tiny" style="width: 60vw; height: 80vh" asp-for="Content"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
@@ -24,6 +26,7 @@
 
                 <input type="hidden" asp-for="UserId" class="form-control" value="@userManager.GetUserId(User)" />
             </div>
+            <!-- sumbit button for creating a document->
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -33,6 +36,7 @@
 </div>
 
 <div>
+        <!--link to return to the previous page -->
     <a class="btn btn-info mt-3" asp-action="Index">Return</a>
 </div>
 

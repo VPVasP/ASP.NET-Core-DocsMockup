@@ -5,7 +5,7 @@
 }
 
 <h1>Docs Mockup by VPVASP</h1>
-
+<!-- link to create a new document -->
 <div class="d-flex justify-content-center align-items-center" style="width:150px; height:200px;background-color:lightgray; font-size:100px;">
     <a style="text-decoration:none; color: black;" asp-action="Create">+</a>
 </div>
@@ -20,6 +20,7 @@
         <div class="d-flex justify-content-center align-items-center" style="width:150px; height:200px;background-color:black; font-size:100px;">
             <a style="text-decoration:none; color: black;" asp-action="Edit" asp-route-id="@item.Id">📃</a>
         </div>
+            <!--display the document title -->
         <span style="font-weight: bold">@item.Title</span>
     </div>
     
