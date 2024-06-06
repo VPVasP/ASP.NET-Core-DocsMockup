@@ -2,7 +2,7 @@
 Developed a Google Docs-like application using ASP.NET Core with TinyMCE and SQL Database for data storage. Implemented user authentication, document creation/modification/deletion and PDF export functionality.
 
 ## Technologies Used:
-- Technologies Used: ASP.NET Core, TinyMCE, SQL, C#
+- ASP.NET Core, TinyMCE, SQL, C#
 
 ## How to Install
 1. Clone this GitHub Repository to your computer.
